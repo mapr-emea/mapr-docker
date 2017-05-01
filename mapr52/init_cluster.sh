@@ -25,6 +25,7 @@ maprcli node cldbmaster
 maprcli service list
 maprcli disk list -host $(hostname -f)
 maprcli config save -values '{"cldb.volumes.default.replication": 1, "cldb.volumes.default.min.replication":1}'
+maprcli config save -values '{"cldb.volumes.namespace.default.min.replication": 1, "cldb.volumes.namespace.default.replication":1}'
 
 # Reset volume replication to one
 maprcli volume list -json | jq '.data[].volumename' | xargs -L 1 maprcli volume modify -replication 1 -minreplication 1 -name
